@@ -12,6 +12,8 @@
 
 You are a pancake chef in a fancy pancake restaurant. There are many customers waiting so you need to get those pancakes out quick! Pancaked need to be cooked on either side and taken off the pan at the right moment before they burn.
 
+The current settings are that if a pancake is cooked for exactly 2 seconds on either side, it's cooked. If it's cooked for more than 2 seconds on either side it will be burnt and otherwise it will be raw. You can change these settings in the `Pancake.js`!
+
 The code for your pancake factory is very nearly there, with just a few key bits missing!
 
 ## Pancake needs a timer!

@@ -15,9 +15,13 @@ class Game extends React.Component {
     });
   }
 
-  takeItOff(id) {
+  takeItOff(id, status) {
+    const { pancakes, cooked, burnt, raw } = this.state;
     this.setState({
-      pancakes: this.state.pancakes.filter(pancake => !(pancake === id))
+      pancakes: pancakes.filter(pancake => !(pancake === id)),
+      cooked: status === 'cooked' ? cooked + 1 : cooked,
+      burnt: status === 'burnt' ? burnt + 1 : burnt,
+      raw: status === 'raw' ? raw + 1 : raw
     });
   }
 
@@ -25,19 +29,26 @@ class Game extends React.Component {
     super(props);
     this.state = {
       time: undefined,
-      pancakes: []
+      pancakes: [],
+      cooked: 0,
+      burnt: 0,
+      raw: 0
     };
     this.addPancake = this.addPancake.bind(this);
     this.takeItOff = this.takeItOff.bind(this);
   }
 
   render() {
-    const pancakes = this.state.pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
+    const { pancakes, burnt, cooked, raw } = this.state;
+    const pans = pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
     return (
       <div>
         Start date: {`${this.state.time}`}
         <button onClick={this.addPancake}>Pancake me!</button>
-        {pancakes}
+        {pans}
+        <p>Cooked: {cooked}</p>
+        <p>Burnt: {burnt}</p>
+        <p>Raw: {raw}</p>
       </div>
     )
   }

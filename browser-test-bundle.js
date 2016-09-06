@@ -33,11 +33,20 @@ var Game = function (_React$Component) {
     }
   }, {
     key: 'takeItOff',
-    value: function takeItOff(id) {
+    value: function takeItOff(id, status) {
+      var _state = this.state;
+      var pancakes = _state.pancakes;
+      var cooked = _state.cooked;
+      var burnt = _state.burnt;
+      var raw = _state.raw;
+
       this.setState({
-        pancakes: this.state.pancakes.filter(function (pancake) {
+        pancakes: pancakes.filter(function (pancake) {
           return !(pancake === id);
-        })
+        }),
+        cooked: status === 'cooked' ? cooked + 1 : cooked,
+        burnt: status === 'burnt' ? burnt + 1 : burnt,
+        raw: status === 'raw' ? raw + 1 : raw
       });
     }
   }, {
@@ -54,7 +63,10 @@ var Game = function (_React$Component) {
 
     _this.state = {
       time: undefined,
-      pancakes: []
+      pancakes: [],
+      cooked: 0,
+      burnt: 0,
+      raw: 0
     };
     _this.addPancake = _this.addPancake.bind(_this);
     _this.takeItOff = _this.takeItOff.bind(_this);
@@ -66,7 +78,13 @@ var Game = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var pancakes = this.state.pancakes.map(function (pancake, index) {
+      var _state2 = this.state;
+      var pancakes = _state2.pancakes;
+      var burnt = _state2.burnt;
+      var cooked = _state2.cooked;
+      var raw = _state2.raw;
+
+      var pans = pancakes.map(function (pancake, index) {
         return React.createElement(Pancake, { key: index, id: pancake, takeItOff: _this2.takeItOff });
       });
       return React.createElement(
@@ -79,7 +97,25 @@ var Game = function (_React$Component) {
           { onClick: this.addPancake },
           'Pancake me!'
         ),
-        pancakes
+        pans,
+        React.createElement(
+          'p',
+          null,
+          'Cooked: ',
+          cooked
+        ),
+        React.createElement(
+          'p',
+          null,
+          'Burnt: ',
+          burnt
+        ),
+        React.createElement(
+          'p',
+          null,
+          'Raw: ',
+          raw
+        )
       );
     }
   }]);
@@ -148,8 +184,21 @@ var Pancake = function (_React$Component) {
   }, {
     key: 'takeItOff',
     value: function takeItOff() {
-      var pancakeId = this.props.id;
-      this.props.takeItOff(pancakeId);
+      var _state = this.state;
+      var timeCooked = _state.timeCooked;
+      var flippedAt = _state.flippedAt;
+      var id = this.props.id;
+
+
+      var status = 'raw';
+
+      // 2 seconds on either side is perfect
+      if (timeCooked === 4 && flippedAt === 2) status = 'cooked';
+
+      // anything over is burnt
+      if (timeCooked > 4 || flippedAt > 2) status = 'burnt';
+
+      this.props.takeItOff(id, status);
     }
   }]);
 
@@ -171,6 +220,10 @@ var Pancake = function (_React$Component) {
   _createClass(Pancake, [{
     key: 'render',
     value: function render() {
+      var _state2 = this.state;
+      var timeCooked = _state2.timeCooked;
+      var flippedAt = _state2.flippedAt;
+
       var firstSide = Boolean(this.state.flippedAt === undefined);
       return React.createElement(
         'div',
@@ -178,15 +231,19 @@ var Pancake = function (_React$Component) {
         'I am a pancake. Time cooked on ',
         '' + (firstSide ? 'first' : 'second'),
         ' side: ',
-        '' + (firstSide ? this.state.timeCooked : this.state.timeCooked - this.state.flippedAt),
-        firstSide ? React.createElement(
-          'button',
-          { onClick: this.flip },
-          'Flip!'
-        ) : React.createElement(
-          'button',
-          { onClick: this.takeItOff },
-          'Take it off!'
+        '' + (firstSide ? timeCooked : timeCooked - flippedAt),
+        React.createElement(
+          'div',
+          null,
+          firstSide ? React.createElement(
+            'button',
+            { onClick: this.flip },
+            'Flip!'
+          ) : React.createElement(
+            'button',
+            { onClick: this.takeItOff },
+            'Take it off!'
+          )
         )
       );
     }
