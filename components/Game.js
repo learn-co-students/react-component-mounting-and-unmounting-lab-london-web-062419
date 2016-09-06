@@ -1,45 +1,43 @@
 const React = require('react');
+const Pancake = require('./Pancake');
 
 class Game extends React.Component {
 
   // TODO: create a componentWillMount() which will set the current time
-  
-  // TODO: create a componentDidMount() which will start the interval to count how long the component has been mounted
-  
-  // TODO: create a componentWillUnmount() which will clear the interval
-
-  updateCounter() {
-    this.setState({
-      timeActive: this.state.timeActive + 1
-    })
-  }
 
   setCurrentTime() {
     this.setState({ time: new Date(Date.now())});
   }
 
-  startInterval() {
-    this.interval = setInterval(this.updateCounter, 1000);
+  addPancake() {
+    this.setState({
+      pancakes: this.state.pancakes.concat(Date.now())
+    });
   }
 
-  cleanUpInterval() {
-    clearInterval(this.interval);
+  takeItOff(id) {
+    this.setState({
+      pancakes: this.state.pancakes.filter(pancake => !(pancake === id))
+    });
   }
 
   constructor(props) {
     super(props);
     this.state = {
       time: undefined,
-      timeActive: 0
+      pancakes: []
     };
-    this.updateCounter = this.updateCounter.bind(this);
+    this.addPancake = this.addPancake.bind(this);
+    this.takeItOff = this.takeItOff.bind(this);
   }
 
   render() {
+    const pancakes = this.state.pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
     return (
       <div>
         Start date: {`${this.state.time}`}
-        Time running: {`${this.state.timeActive}`}
+        <button onClick={this.addPancake}>Pancake me!</button>
+        {pancakes}
       </div>
     )
   }

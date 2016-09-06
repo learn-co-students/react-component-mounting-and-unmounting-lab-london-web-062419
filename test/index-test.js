@@ -13,23 +13,6 @@ describe('Game', () => {
     expect(spy.calls.length).toEqual(1);
     Game.prototype.setCurrentTime.restore();
   });
-
-  it('sets up the interval updating the timer every second', () => {
-    const spy = expect.spyOn(Game.prototype, 'startInterval');
-    const wrapper = mount(<Game />);
-    expect(spy).toHaveBeenCalled();
-    expect(spy.calls.length).toEqual(1);
-    Game.prototype.startInterval.restore();
-  });
-
-  it('cleans up the interval when the component is destroyed', () => {
-    const spy = expect.spyOn(Game.prototype, 'cleanUpInterval');
-    const wrapper = mount(<Game />);
-    wrapper.unmount();
-    expect(spy).toHaveBeenCalled();
-    expect(spy.calls.length).toEqual(1);
-    Game.prototype.cleanUpInterval.restore();
-  });
 });
 
 

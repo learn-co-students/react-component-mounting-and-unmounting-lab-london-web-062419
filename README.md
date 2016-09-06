@@ -10,9 +10,19 @@
 
 ## Overview
 
-This lab should give students a chance to practice mounting components —
-requesting remote data, attaching to the DOM, etc. — and unmounting components —
-invalidating timers, removing DOM references, etc.
+You are a pancake chef in a fancy pancake restaurant. There are many customers waiting so you need to get those pancakes out quick! Pancaked need to be cooked on either side and taken off the pan at the right moment before they burn.
+
+The code for your pancake factory is very nearly there, with just a few key bits missing!
+
+## Pancake needs a timer!
+
+Firstly, we need a timer on each pancake so we could record how long it's been cooking. Look in `Pancake.js` - the `startInterval()` bethod is already there. All you need to do it add a lifecycle method in `Pancake.js` at `componentDidMount()` (that's the point at which the pancake component gets added to the page) which will start the counter.
+
+
+## Tidy up the timer
+
+Now that we've set up a timer, we need to make sure we also remove it as soon as it's not needed anymore. It's important to always do these these two in pairs. As you can see, a `cleanUpInterval()` function is all set up for you so all you need to do it call it just before the component gets unmouned from the page. That will be in the `componentWillUnmount()` method.
+
 
 ## Resources
 
