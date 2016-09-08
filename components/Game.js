@@ -42,13 +42,14 @@ class Game extends React.Component {
     const { pancakes, burnt, cooked, raw } = this.state;
     const pans = pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
     return (
-      <div>
-        Start date: {`${this.state.time}`}
-        <button onClick={this.addPancake}>Pancake me!</button>
-        {pans}
-        <p>Cooked: {cooked}</p>
-        <p>Burnt: {burnt}</p>
-        <p>Raw: {raw}</p>
+      <div className="Game">
+        <div>
+          <div className="Game__score --cooked">Cooked: {cooked}</div>
+          <div className="Game__score --burnt">Burnt: {burnt}</div>
+          <div className="Game__score --raw">Raw: {raw}</div>
+        </div>
+        <button onClick={this.addPancake} className="Game__button">New pancake!</button>
+        <div className="Game__pancakes">{pans}</div>
       </div>
     )
   }
