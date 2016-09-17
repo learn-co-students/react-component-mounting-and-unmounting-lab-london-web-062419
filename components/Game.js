@@ -39,10 +39,11 @@ class Game extends React.Component {
   }
 
   render() {
-    const { pancakes, burnt, cooked, raw } = this.state;
+    const { pancakes, burnt, cooked, raw, time } = this.state;
     const pans = pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
     return (
       <div className="Game">
+        <span>Pancake shop opened at: {time ? time.toString() : ''}</span>
         <div>
           <div className="Game__score --cooked">Cooked: {cooked}</div>
           <div className="Game__score --burnt">Burnt: {burnt}</div>

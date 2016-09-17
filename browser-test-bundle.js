@@ -78,6 +78,7 @@ var Game = function (_React$Component) {
       var burnt = _state2.burnt;
       var cooked = _state2.cooked;
       var raw = _state2.raw;
+      var time = _state2.time;
 
       var pans = pancakes.map(function (pancake, index) {
         return React.createElement(Pancake, { key: index, id: pancake, takeItOff: _this2.takeItOff });
@@ -85,6 +86,12 @@ var Game = function (_React$Component) {
       return React.createElement(
         'div',
         { className: 'Game' },
+        React.createElement(
+          'span',
+          null,
+          'Pancake shop opened at: ',
+          time ? time.toString() : ''
+        ),
         React.createElement(
           'div',
           null,
@@ -61063,6 +61070,7 @@ var spyOn = _require2.spyOn;
 
 
 var Game = require('../components/Game');
+var Pancake = require('../components/Pancake');
 
 describe('Game', function () {
   it('sets the initial time when the game was started in componentWillMount', function () {
@@ -61074,4 +61082,23 @@ describe('Game', function () {
   });
 });
 
-},{"../components/Game":1,"enzyme":58,"expect":82,"react":429,"react-dom":281}]},{},[447]);
+describe('Pancake', function () {
+  it('sets up the interval updating the cooking time every second', function () {
+    var spy = expect.spyOn(Pancake.prototype, 'startInterval');
+    var wrapper = mount(React.createElement(Pancake, null));
+    expect(spy).toHaveBeenCalled();
+    expect(spy.calls.length).toEqual(1);
+    Pancake.prototype.startInterval.restore();
+  });
+
+  it('cleans up the interval when the component is destroyed', function () {
+    var spy = expect.spyOn(Pancake.prototype, 'cleanUpInterval');
+    var wrapper = mount(React.createElement(Pancake, null));
+    wrapper.unmount();
+    expect(spy).toHaveBeenCalled();
+    expect(spy.calls.length).toEqual(1);
+    Pancake.prototype.cleanUpInterval.restore();
+  });
+});
+
+},{"../components/Game":1,"../components/Pancake":2,"enzyme":58,"expect":82,"react":429,"react-dom":281}]},{},[447]);
