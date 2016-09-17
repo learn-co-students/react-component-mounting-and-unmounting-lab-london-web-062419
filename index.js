@@ -7,3 +7,5 @@ ReactDOM.render(
   <Game />,
   document.getElementById('main')
 );
+
+require('./test/index-test.js'); // Leave this in!
