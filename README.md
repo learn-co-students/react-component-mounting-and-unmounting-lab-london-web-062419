@@ -35,11 +35,10 @@ Now that we've set up a timer, we need to make sure we also remove it as soon as
 
 That's it! You've finished off the game! Happy pancake-making!
 
-<p align="center">
-  <img src="https://67.media.tumblr.com/b90675dbc2eae7fba31d27f0ad010e05/tumblr_o2a91y7cC91rvgg6zo1_500.gif"/>
-</p>
 
 
 ## Resources
 
 - [React: Component Specs and Lifecycle](https://facebook.github.io/react/docs/component-specs.html)
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/react-component-mounting-and-unmounting-lab'>Component Mounting And Unmounting Lab</a> on Learn.co and start learning to code for free.</p>
