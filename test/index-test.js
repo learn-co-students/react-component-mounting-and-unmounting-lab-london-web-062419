@@ -1,10 +1,10 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const { shallow, mount } = require('enzyme');
-const { spyOn } = require('expect');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { shallow, mount } from 'enzyme';
+import { spyOn } from 'expect';
 
-const Game = require('../components/Game');
-const Pancake = require('../components/Pancake');
+import Game from '../components/Game';
+import Pancake from '../components/Pancake';
 
 describe('Game', () => {
   it('sets the initial time when the game was started in componentWillMount', () => {

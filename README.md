@@ -36,7 +36,7 @@ Now that we've set up a timer, we need to make sure we also remove it as soon as
 That's it! You've finished off the game! Happy pancake-making!
 
 <p align="center">
-  <img src="https://67.media.tumblr.com/b90675dbc2eae7fba31d27f0ad010e05/tumblr_o2a91y7cC91rvgg6zo1_500.gif"/>
+  <img src="https://68.media.tumblr.com/f49e5cb49c696431cee4fa7da572092e/tumblr_nwpde9clnp1u7gnm9o1_500.gif"/>
 </p>
 
 
