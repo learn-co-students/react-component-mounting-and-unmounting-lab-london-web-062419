@@ -35,8 +35,6 @@ Now that we've set up a timer, we need to make sure we also remove it as soon as
 
 That's it! You've finished off the game! Happy pancake-making!
 
-
-
 ## Resources
 
 - [React: Component Specs and Lifecycle](https://facebook.github.io/react/docs/component-specs.html)
