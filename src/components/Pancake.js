@@ -76,7 +76,7 @@ class Pancake extends React.Component {
           </p>
           <div>
             { firstSide ?
-              <button className="flip" onClick={this.flip}>Flip me!</button>
+              <button onClick={this.flip}>Flip me!</button>
               :
               <button onClick={this.takeItOff}>Take me off!</button>
             }
