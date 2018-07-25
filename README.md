@@ -32,7 +32,7 @@ these settings in `<Pancake />`!
 
 First, you want to record the time your shop was opened. Open `<Game />` and
 notice a `setCurrentTime()` method already exits, but it is not yet called.
-Create a `componentWillMount()` method in `<Game />` which will call the
+Create a `componentDidMount()` method in `<Game />` which will call the
 `setCurrentTime()` when the component is first created. If you've done that
 correctly, you should see the current time at the top of the page.
 
