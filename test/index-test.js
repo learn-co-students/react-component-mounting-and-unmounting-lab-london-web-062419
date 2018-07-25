@@ -42,6 +42,6 @@ describe('Pancake', () => {
 
     const pWrapper = mount(<Pancake />);
     pWrapper.unmount()
-    expect(Button.prototype.componentWillUnmount.calledOnce, "handleClick was not called").to.equal(true)
+    expect(Pancake.prototype.componentWillUnmount.calledOnce, "handleClick was not called").to.equal(true)
   });
 });
