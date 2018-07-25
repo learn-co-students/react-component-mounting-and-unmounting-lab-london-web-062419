@@ -17,10 +17,12 @@ beforeEach(function () {
  });
 
 describe('Game', () => {
-  it('sets the initial time when the game was started in componentWillMount', () => {
+  it('sets the initial time when the game was started in componentDidMount', () => {
 
     const gWrapper = mount(<Game />);
-    expect(gWrapper.state('time')).to.not.equal('undefined');
+    gWrapper.update()
+    expect(gWrapper.state().time).to.not.equal(undefined);
+
   });
 });
 
@@ -35,8 +37,11 @@ describe('Pancake', () => {
   });
 
   it('calls componentWillUnmount', () => {
+
+    let spy = sinon.spy(Pancake.prototype, "componentWillUnmount")
+
     const pWrapper = mount(<Pancake />);
     pWrapper.unmount()
-    expect(pWrapper.type()).to.equal(null);
+    expect(Button.prototype.componentWillUnmount.calledOnce, "handleClick was not called").to.equal(true)
   });
 });
