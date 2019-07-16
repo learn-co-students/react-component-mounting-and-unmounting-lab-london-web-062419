@@ -52,7 +52,6 @@ class Pancake extends React.Component {
 
   takeItOff = () => {
     const { id } = this.props;
-    const { timeCooked, flippedAt } = this.state;
     let status = this.getPancakeStatus();
     this.props.takeItOff(id, status);
   };
