@@ -7,7 +7,7 @@ class Pancake extends React.Component {
 
     this.state = {
       timeCooked: 0,
-      flippedAt: undefined
+      flippedAt: null
     };
   }
 
@@ -43,7 +43,7 @@ class Pancake extends React.Component {
     const { timeCooked, flippedAt } = this.state;
 
     // first side
-    if (!flippedAt) {
+    if (flippedAt === null && typeof flippedAt !== "Number") {
       if (timeCooked < 2) return 'raw';
       if (timeCooked === 2) return 'cooked';
       return 'burnt';
@@ -66,7 +66,7 @@ class Pancake extends React.Component {
 
   render() {
     const { timeCooked, flippedAt } = this.state;
-    const firstSide = Boolean(this.state.flippedAt === undefined);
+    const firstSide = Boolean(this.state.flippedAt === null && typeof flippedAt !== "Number");
     const status = this.getPancakeStatus();
 
     return (
