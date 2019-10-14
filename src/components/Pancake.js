@@ -58,7 +58,7 @@ class Pancake extends React.Component {
 
   render() {
     const { timeCooked, flippedAt } = this.state;
-    const firstSide = Boolean(this.state.flippedAt === null);
+    const firstSide = Boolean(this.state.flippedAt === null && typeof flippedAt !== "Number");
     const status = this.getPancakeStatus();
 
     return (
