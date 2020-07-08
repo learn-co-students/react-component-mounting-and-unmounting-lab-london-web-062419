@@ -62,5 +62,3 @@ That's it! You've finished off the game! Happy pancake-making!
 ## Resources
 
 - [React: Component Specs and Lifecycle](https://reactjs.org/docs/react-component.html)
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/react-component-mounting-and-unmounting-lab'>Component Mounting And Unmounting Lab</a> on Learn.co and start learning to code for free.</p>
